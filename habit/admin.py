@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Habit
+
+
+@admin.register(Habit)
+class HabitAdmin(admin.ModelAdmin):
+    model = Habit

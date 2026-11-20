@@ -1,3 +1,10 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-# Register your models here.
+from .models import CustomUser
+
+
+@admin.register(CustomUser)
+class CustomUserAdmin(UserAdmin):
+    model = CustomUser
+    fieldsets = UserAdmin.fieldsets + (("Telegram", {"fields": ("tg_chat_id",)}),)
