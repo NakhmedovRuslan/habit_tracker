@@ -1,5 +1,6 @@
 from rest_framework.generics import (CreateAPIView, DestroyAPIView,
-                                     ListAPIView, UpdateAPIView, RetrieveAPIView)
+                                     ListAPIView, RetrieveAPIView,
+                                     UpdateAPIView)
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from habit.models import Habit

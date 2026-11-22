@@ -8,7 +8,6 @@ from rest_framework.test import APIClient
 
 from habit.models import Habit
 
-
 User = get_user_model()
 
 
