@@ -1,5 +1,5 @@
 from rest_framework.generics import (CreateAPIView, DestroyAPIView,
-                                     ListAPIView, UpdateAPIView)
+                                     ListAPIView, UpdateAPIView, RetrieveAPIView)
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from habit.models import Habit
@@ -48,6 +48,16 @@ class HabitUpdateAPIView(UpdateAPIView):
 
 class HabitDestroyAPIView(DestroyAPIView):
     """контроллер удаления привычки"""
+
+    serializer_class = HabitSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    def get_queryset(self):
+        return Habit.objects.filter(user=self.request.user)
+
+
+class HabitRetrieveAPIView(RetrieveAPIView):
+    """контроллер детального просмотра привычки"""
 
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated, IsOwner]
